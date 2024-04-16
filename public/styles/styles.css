@@ -1,0 +1,160 @@
+html, body{
+    height: 100%;
+}
+.container {
+    display: flex;
+    
+
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+.one {
+    color: blueviolet;
+    background-color: crimson;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center; 
+    margin: 20px;
+    padding:15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border: 1px black solid;
+    display: inline;
+}
+
+
+.two{
+    color: blue;
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+    border: 3px darkblue solid;
+    width: 50%;
+    background-color: gray;
+}
+.two:hover {
+    background-color: black;
+    color: white;
+}
+
+.three {
+    font-size: 15;
+    text-align: center;
+    background-color: #1ed760;
+    border: 2px #1ed75f60 solid;
+    border-radius: 25px;
+    color:black;
+    margin: 25px;
+    padding: 25px;
+}
+
+.three:hover {
+    padding: 27px;
+    font-size: 17px;
+}
+
+.four {
+    border: 5px solid black;
+    padding: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+}
+
+.hidden { 
+    text-align: center;
+    color: white;
+    margin: auto;
+}
+
+.hidden:hover {
+    color: black;
+    text-shadow: 1px 1px 1px red,
+                 2px 2px 1px red;
+}
+
+.secret{
+    color:white;
+    font-size: 8.5px;
+    margin-left: 69%;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 25%;
+}
+
+
+@media (max-width: 768px) and (min-width: 601px){
+    .one {
+        width: 100%;
+        color: goldenrod;
+        background-color: rgb(101, 115, 197);
+        font-style: arial;
+        text-align: left; 
+        margin: 20px;
+        padding:15px;
+        padding-right: 25px;
+        padding-left: 25px;
+        border: 1px orange solid;
+        display: inline;
+    }
+
+    .two {
+        color: darkmagenta;
+        text-align: center;
+        margin: auto;
+        padding: 15px;
+        border: 6px yellow dotted;
+        width: 50%;
+        background-color: gray;
+    }
+
+    .two:hover {
+        background-color: white;
+        color: black;
+        border: darkorange 3px solid;
+        border-radius: 50%;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .one {
+        width: 100%;
+        color: rgb(80, 25, 25);
+        background-color: rgb(60, 184, 54); 
+        font-style: arial;
+        text-align: right; 
+        margin: 20px;
+        padding:15px;
+        padding-right: 25px;
+        padding-left: 25px;
+        border: 1px orange solid;
+        display: inline;
+    }
+
+    body {
+        background-color: lightgray;
+    }
+
+    .four {
+        border:none;
+        margin:auto;
+        text-align: left;
+    }
+}
+
+p{
+    color: red;
+}
