@@ -1,6 +1,6 @@
 html, body{
     height: 100%;
-    background-image: linear-gradient(to bottom right, blue, purple);
+    background-image: linear-gradient(to top left, white, gray);
 }
 
 
@@ -19,38 +19,13 @@ h1 {
     text-align: center;
 }
 
-.selection {
-    font-size: 15px;
-    font-family: sans-serif;
-    color: white;
-    padding: 15px;
-    margin: auto;
-}
 
-.selection:hover {
-    text-shadow: 0 0 9px white;
-}
 
-.three {
-    font-size: 15;
-    text-align: center;
-    background-color: #1ed760;
-    border: 3px #1ed75f92 solid;
-    border-radius: 25px;
-    color:black;
-    margin: 25px;
-    padding: 25px;
-}
-
-.three:hover {
-    padding: 27px;
-    font-size: 17px;
-}
 
 
 @media (max-width: 768px) and (min-width: 601px){
     html, body{
-        background-image: linear-gradient(to top left, blue, purple);
+        background-image: linear-gradient(to top left, white, black);
     }
 }
 
@@ -63,10 +38,5 @@ h1 {
         font-family: fantasy;
     }
     
-    .three:hover {
-        padding: 27px;
-        font-size: 17px;
-        background-image: linear-gradient(to bottom right, red, black);
-        border: 3px rgba(0, 0, 0, 0.398) solid;
-    }
+    
 }

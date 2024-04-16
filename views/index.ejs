@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head', {title: 'Home | Cookieshop'}) %>
+<%- include('includes/head(navi)', {title: 'Home | Cookieshop'}) %>
 
 <body>
   <%- include('includes/header', {header: 'MAINPAGE COOKIESHOP'}) %>
-
+  <div class="selection">
+    <%- include('includes/header(navi)') %>
+  </div>
   <main>
     <p>Welcome to my cookieshop. 👋</p>
     <% const stockNumber = 42 %>

@@ -142,7 +142,7 @@ app.get('/cookies/new', (request, response) => {
 
 
 app.get('/coolpage', (request, response) => {
-    response.send( 'hello'+ data.description)
+    response.send( 'hello '+ data.description)
   })
 
 

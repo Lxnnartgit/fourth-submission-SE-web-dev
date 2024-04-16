@@ -4,22 +4,32 @@
     <title> TEST TEST TEST </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles(navi).css">
     <link rel="stylesheet" href="/styles/styles2.css">
 </head>
 
 <body>
-  <%- include('includes/header', {header: 'TEST PAGE FOR CSS actual project'}) %>
+  <div class="center">
+    <%- include('includes/header', {header: 'TEST PAGE FOR CSS actual project'}) %>
+  </div>
+  <div class="selection">
+    <%- include('includes/header(navi)') %>
+  </div>
+  <div class="container">
+  
+    <main>
+      <div>
+      <p>Welcome to my TeStbase. 👋</p>
+      <% const stockNumber = 42 %>
+      <p>We currently have <%= numberOfCookiesInStock %> cookies in stock.</p>
+      <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
+      <p>We already planted <%= numberOfCookiesSold %> cookietrees 
+          because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
+      </div>
+    </main>
 
-  <main>
-    <div>
-    <p>Welcome to my TeStbase. 👋</p>
-    <% const stockNumber = 42 %>
-    <p>We currently have <%= numberOfCookiesInStock %> cookies in stock.</p>
-    <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
-    <p>We already planted <%= numberOfCookiesSold %> cookietrees 
-        because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
-    </div>
-  </main>
+  
+  </div>
 
   <footer>
     Made with 🍪 by Codecookies

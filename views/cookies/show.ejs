@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: `${cookie.name} | Cookieshop`}) %>
+    <%- include('../includes/head(navi)', {title: `${cookie.name} | Cookieshop`}) %>
 <body>
     <%- include('../includes/header', {header: `${cookie.name}`}) %>
+    <div class="selection">
+      <%- include('../includes/header(navi)') %>
+    </div>
 
   <main>
     <h1><%= cookie.name %></h1>
