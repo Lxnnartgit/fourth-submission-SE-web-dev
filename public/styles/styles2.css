@@ -1,6 +1,5 @@
 html, body{
     height: 100%;
-    background-image: linear-gradient(to top left, white, gray);
 }
 
 
@@ -19,14 +18,25 @@ h1 {
     text-align: center;
 }
 
+.highlight {
+    background-color: white;
+}
 
-
-
+.highlight:hover{
+    background-color: gold;
+    text-align: center;
+}
 
 @media (max-width: 768px) and (min-width: 601px){
     html, body{
         background-image: linear-gradient(to top left, white, black);
     }
+
+    .highlight{
+        background-image: linear-gradient(to top left, white, black);
+    }
+
+
 }
 
 @media (max-width: 600px) {
@@ -34,9 +44,8 @@ h1 {
         background-image: linear-gradient(to bottom right, red, black);
     }
 
-    .selection{
-        font-family: fantasy;
+    .highlight:hover{
+        background-color: hotpink;
     }
-    
     
 }

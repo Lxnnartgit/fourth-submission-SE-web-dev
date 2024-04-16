@@ -28,13 +28,6 @@ mongoose.connect(process.env.MONGODB_URI)
   
 const Cookie = mongoose.model('Cookie', cookieSchema)
 
-// const usersRouter = require('./controllers/users')
-
-// // ...
-
-// app.use('/api/users', usersRouter)
-
-
 // cookies.forEach(cookie => {
 //     '<li>' + cookie + '</li>'
 //   })
@@ -103,16 +96,16 @@ app.get('/cookies/new', (request, response) => {
 
   app.post('/cookies/:slug', async (request, response) => {
     try {
-        const cookie = await Cookie.findOneAndUpdate(
-            { slug: request.params.slug }, 
-            request.body,
-            { new: true }
-          )
+      const cookie = await Cookie.findOneAndUpdate(
+        { slug: request.params.slug }, 
+        request.body,
+        { new: true }
+      )
       
-        response.redirect(`/cookies/${cookie.slug}`)
+      response.redirect(`/cookies/${cookie.slug}`)
     }catch (error) {
       console.error(error)
-      response.send('Error: The cookie could not be update.')
+      response.send('Error: The cookie could not be created.')
     }
   })
 
@@ -120,7 +113,7 @@ app.get('/cookies/new', (request, response) => {
     try {
       const slug = request.params.slug
       const cookie = await Cookie.findOne({ slug: slug }).exec()
-      if(!cookie) throw new Error('Elemnt Cookie not found')
+      if(!cookie) throw new Error('Cookie not found')
   
       response.render('cookies/edit', { cookie: cookie })
     }catch(error) {
@@ -128,17 +121,18 @@ app.get('/cookies/new', (request, response) => {
       response.status(404).send('Could not find the cookie you\'re looking for.')
     }
   })
+  
 
   app.get('/cookies/:slug/delete', async (request, response) => {
-  try {
-    await Cookie.findOneAndDelete({ slug: request.params.slug })
-    
-    response.redirect('cookies')
-  }catch (error) {
-    console.error(error)
-    response.send('Error: No cookie was deleted.')
-  }
-})
+    try {
+      await Cookie.findOneAndDelete({ slug: request.params.slug })
+      
+      response.redirect('/cookies')
+    }catch (error) {
+      console.error(error)
+      response.send('Error: No cookie was deleted.')
+    }
+  })
 
 
 app.get('/coolpage', (request, response) => {
@@ -152,7 +146,6 @@ app.get('/coolpage', (request, response) => {
         numberOfCookiesInStock: numberOfCookiesInStock,
         nameOfThePage: "Cookieshop",
         numberOfCookiesSold: 69420
-        //!!! connect to database to show how many elements I currently have (Ideas)
     })
 })
 

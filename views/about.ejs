@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head(navi)', {title: 'About | Cookieshop'}) %>
+<%- include('includes/head(styles)', {title: 'About | Cookieshop'}) %>
 
 <body>
   <%- include('includes/header', {header: 'About this project:'}) %>
@@ -13,9 +13,9 @@
     <% const stockNumber = 42 %>
     <p>We currently have <%= numberOfCookiesInStock %> Ideas produced (this is a lie i dont have any)</p>
     <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
-    <p>We already planted <%= numberOfCookiesSold %> cookietrees 
+    <p class="highlight">We already planted <%= numberOfCookiesSold %> cookietrees 
         because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
-    
+    <a href="/test">testpage for css design (not fully finished)</a>
   </main>
 
   <%- include('includes/footer') %>

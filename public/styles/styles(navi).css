@@ -16,3 +16,20 @@
 .selection:hover {
     text-shadow: 0 0 9px gray;
 }
+
+@media (max-width: 768px) and (min-width: 601px){
+    .selection{
+        background-color: aqua;
+    }
+}
+
+@media (max-width: 600px) {
+  
+    .selection{
+        font-family:'Courier New', Courier, monospace;
+        background-image: linear-gradient(to bottom right, red, black);
+        color: white;
+    }
+    
+    
+}
