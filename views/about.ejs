@@ -1,7 +1,21 @@
-<%- include('includes/head', {title: ' About | This Project'}) %> <%- include('includes/header', {header: 'About this project:'}) %>
-Welcome to my Ideation Idea
-<% const stockNumber = 42 %>
-We currently have <%= numberOfCookiesInStock %> Ideas produced (this is a lie i dont have any)
-We currently have <%= 42 - 23 %> cookies in stock.
-We already planted <%= numberOfCookiesSold %> cookietrees because <%= numberOfCookiesSold %> cookies have been sold
-<%- include('includes/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head', {title: 'About | Cookieshop'}) %>
+
+<body>
+  <%- include('includes/header', {header: 'About this project:'}) %>
+
+  <main>
+    <p>Welcome to my Ideation Idea</p>
+    <% const stockNumber = 42 %>
+    <p>We currently have <%= numberOfCookiesInStock %> Ideas produced (this is a lie i dont have any)</p>
+    <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
+    <p>We already planted <%= numberOfCookiesSold %> cookietrees 
+        because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
+    
+  </main>
+
+  <%- include('includes/footer') %>
+
+</body>
+</html>

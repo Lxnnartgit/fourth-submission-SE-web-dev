@@ -2,21 +2,21 @@ import express, { request, response } from 'express';
 import data from './data.json' assert { type: "json"};
 import { readablePrice } from './helpers/cookie-views.js'
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
- const cookies = [
-  {name: "Strawberryry", slug: "strawberryry",priceInCents: 420, isInStock: true},
-  {name: "Mangogo", slug: "mangogo",priceInCents: 1234, isInStock: true},
-  { name: "Cakeke", slug: "cakeke",priceInCents: 999, isInStock: false}
- ]
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  const cookies = [
+//   {name: "Strawberryry", slug: "strawberryry",priceInCents: 420, isInStock: true},
+//   {name: "Mangogo", slug: "mangogo",priceInCents: 1234, isInStock: true},
+//   { name: "Cakeke", slug: "cakeke",priceInCents: 999, isInStock: false}
+//  ]
+//
 
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 const hostname = '127.0.0.1';
-const PORT = 3000
-mongoose.connect('mongodb://127.0.0.1:27017/cookieshop')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('💽 Database connected'))
   .catch(error => console.error(error))
   const cookieSchema = new mongoose.Schema({
@@ -28,10 +28,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/cookieshop')
   
 const Cookie = mongoose.model('Cookie', cookieSchema)
 
+// const usersRouter = require('./controllers/users')
 
-cookies.forEach(cookie => {
-    '<li>' + cookie + '</li>'
-  })
+// // ...
+
+// app.use('/api/users', usersRouter)
+
+
+// cookies.forEach(cookie => {
+//     '<li>' + cookie + '</li>'
+//   })
 
 app.get('/',(request, response) => {
     const numberOfCookiesInStock = 40
@@ -136,7 +142,7 @@ app.get('/cookies/new', (request, response) => {
 
 
 app.get('/coolpage', (request, response) => {
-    response.send("hudpihf name is "+ data.description)
+    response.send( 'hello'+ data.description)
   })
 
 
@@ -179,6 +185,6 @@ app.get('/coolpage', (request, response) => {
 
 
 
-app.listen(PORT, () => {
-  console.log(`👋 Started server on port ${PORT}`)
+app.listen(process.env.PORT, () => {
+  console.log(`👋 Started server on port ${process.env.PORT}`)
 })
