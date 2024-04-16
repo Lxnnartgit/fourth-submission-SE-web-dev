@@ -3,11 +3,11 @@ import data from './data.json' assert { type: "json"};
 import { readablePrice } from './helpers/cookie-views.js'
 import mongoose from 'mongoose'
 
-const cookies = [
-    {name: "Strawberryry", slug: "strawberryry",priceInCents: 420, isInStock: true},
-    {name: "Mangogo", slug: "mangogo",priceInCents: 1234, isInStock: true},
-    { name: "Cakeke", slug: "cakeke",priceInCents: 999, isInStock: false}
-]
+ const cookies = [
+  {name: "Strawberryry", slug: "strawberryry",priceInCents: 420, isInStock: true},
+  {name: "Mangogo", slug: "mangogo",priceInCents: 1234, isInStock: true},
+  { name: "Cakeke", slug: "cakeke",priceInCents: 999, isInStock: false}
+ ]
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const app = express()
