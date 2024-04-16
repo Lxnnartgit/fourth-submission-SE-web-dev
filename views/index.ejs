@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head', {title: 'Home | Cookieshop'}) %>
+
+<body>
+  <%- include('includes/header', {header: 'MAINPAGE COOKIESHOP'}) %>
+
+  <main>
+    <p>Welcome to my cookieshop. 👋</p>
+    <% const stockNumber = 42 %>
+    <p>We currently have <%= numberOfCookiesInStock %> cookies in stock.</p>
+    <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
+    <p>We already planted <%= numberOfCookiesSold %> cookietrees 
+        because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
+    
+  </main>
+
+  <footer>
+    Made with 🍪 by Codecookies
+  </footer>
+</body>
+</html>
