@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: `${cookie.name} | Cookieshop`}) %>
+<body>
+    <%- include('../includes/header', {header: `${cookie.name}`}) %>
+
+  <main>
+    <h1><%= cookie.name %></h1>
+    
+    <p>
+      <strong>Price: <%= readablePrice(cookie.priceInCents) %></strong>
+    </p>
+    <% if(cookie.isInStock) { %> 
+      <p style="color: green;">In Stock!</p>
+    <% } else { %>
+      <p style="color: tomato;">Temporarily sold out!</p>
+    <% } %>
+  </main>
+
+  <%- include('../includes/footer') %>
+</body>
+</html>
