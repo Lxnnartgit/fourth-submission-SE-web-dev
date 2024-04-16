@@ -1,0 +1,72 @@
+html, body{
+    height: 100%;
+    background-image: linear-gradient(to bottom right, blue, purple);
+}
+
+
+h1 {
+    font-family: serif;
+}
+
+.container {
+    display: flex;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.selection {
+    font-size: 15px;
+    font-family: sans-serif;
+    color: white;
+    padding: 15px;
+    margin: auto;
+}
+
+.selection:hover {
+    text-shadow: 0 0 9px white;
+}
+
+.three {
+    font-size: 15;
+    text-align: center;
+    background-color: #1ed760;
+    border: 3px #1ed75f92 solid;
+    border-radius: 25px;
+    color:black;
+    margin: 25px;
+    padding: 25px;
+}
+
+.three:hover {
+    padding: 27px;
+    font-size: 17px;
+}
+
+
+@media (max-width: 768px) and (min-width: 601px){
+    html, body{
+        background-image: linear-gradient(to top left, blue, purple);
+    }
+}
+
+@media (max-width: 600px) {
+    html, body{
+        background-image: linear-gradient(to bottom right, red, black);
+    }
+
+    .selection{
+        font-family: fantasy;
+    }
+    
+    .three:hover {
+        padding: 27px;
+        font-size: 17px;
+        background-image: linear-gradient(to bottom right, red, black);
+        border: 3px rgba(0, 0, 0, 0.398) solid;
+    }
+}
