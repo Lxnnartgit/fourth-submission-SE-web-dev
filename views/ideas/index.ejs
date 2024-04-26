@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head(styles)', {title: 'Shop | Idea storage'}) %>
+<body>
+  <div class="center">
+    <%- include('../includes/header', {header: 'IDEA CLOUD'}) %>
+    </div>
+    <div class="selection">
+      <%- include('../includes/header(navi)') %>
+    </div>
+
+  <main class=>
+    <p>WOW you have collected so many good ideas already :D</p>
+  <ul>
+    <% ideas.forEach(idea => { %>
+      <li>
+        <% if(idea.status) { %> 
+            <a href="/ideas/<%= idea.slug %>"><%= idea.name %>: <%= readableTime(idea.timeInMinutes) %> </a>
+          <% } else { %>
+            <%= idea.name %> [finished]
+          <% } %>
+    </li>
+    <% }) %>
+  </ul>
+
+  <br>
+  <p>
+    <a href="/ideas/new"> CREATE YOUR NEW IDEA HERE </a>
+  </p>
+
+  <br>
+  <div class="center">
+  <p class="highlight" style="font-size: x-large;">Keep working and improving!!</p>
+  </div>
+  </main>
+
+  <%- include('../includes/footer') %>
+
+</body>
+</html>

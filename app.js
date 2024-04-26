@@ -1,15 +1,8 @@
 import express, { request, response } from 'express';
 import data from './data.json' assert { type: "json"};
-import { readablePrice } from './helpers/cookie-views.js'
+import { readableTime } from './helpers/timeInMinutes.js'
 import mongoose from 'mongoose'
 import 'dotenv/config'
-
-//  const cookies = [
-//   {name: "Strawberryry", slug: "strawberryry",priceInCents: 420, isInStock: true},
-//   {name: "Mangogo", slug: "mangogo",priceInCents: 1234, isInStock: true},
-//   { name: "Cakeke", slug: "cakeke",priceInCents: 999, isInStock: false}
-//  ]
-//
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -19,163 +12,166 @@ const hostname = '127.0.0.1';
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('💽 Database connected'))
   .catch(error => console.error(error))
-  const cookieSchema = new mongoose.Schema({
+  const ideaSchema = new mongoose.Schema({
     slug: { type: String, unique: true, required: true },
     name: { type: String, required: true },
-    priceInCents: { type: Number, required: true }, 
-    isInStock: { type: Boolean, default: true, required: true }
+    description: { type: String, required: true, minLength: 8 },
+    timeInMinutes: { type: Number, required: true }, 
+    status: { type: Boolean, default: true, required: true }
   })
   
-const Cookie = mongoose.model('Cookie', cookieSchema)
+const Idea = mongoose.model('Idea', ideaSchema)
 
-// cookies.forEach(cookie => {
-//     '<li>' + cookie + '</li>'
-//   })
 
 app.get('/',(request, response) => {
-    const numberOfCookiesInStock = 40
+    const numberOfIdeas = 3
     response.render('index', {
-        numberOfCookiesInStock: numberOfCookiesInStock,
-        nameOfThePage: "Cookieshop",
-        numberOfCookiesSold: 69420
+        numberOfIdeas: numberOfIdeas,
+        nameOfThePage: "Ideationheaven",
+        numberOfIdeasSold: 0
     })
 })
 
-app.get('/cookies', async (request, response) => {
+app.get('/ideas', async (request, response) => {
     try{
-    const cookies = await Cookie.find({priceInCents: { $gte: 2 }}).exec()
-    response.render('cookies/index', {
-        cookies: cookies,
-        readablePrice: readablePrice
+    const ideas = await Idea.find({timeInMinutes: { $gte: 2 }}).exec()
+    response.render('ideas/index', {
+        ideas: ideas,
+        readableTime: readableTime
     })
     }catch(error) {
         console.error(error)
-        response.render('cookies/index', { 
-            cookies: [],
-            readablePrice: readablePrice
+        response.render('ideas/index', { 
+            ideas: [],
+            readableTime: readableTime
           })
     }
   })
 
-  app.post('/cookies', async (request, response) => {
+  app.post('/ideas', async (request, response) => {
     try {
         console.log(request.body)
-      const cookie = new Cookie({
+      const idea = new Idea({
         slug: request.body.slug,
         name: request.body.name,
-        priceInCents: request.body.priceInCents
+        description: request.body.description,
+        timeInMinutes: request.body.timeInMinutes
       })
-      await cookie.save()
+      await idea.save()
   
-      response.send('Cookie Created')
+      response.redirect('redirect')
     }catch (error) {
       console.error(error)
-      response.send('Error: The cookie could not be created.')
+      response.render('error')
     }
   })
 
-app.get('/cookies/new', (request, response) => {
-    response.render('cookies/new')
+app.get('/ideas/new', (request, response) => {
+    response.render('ideas/new')
+    
   })
 
-  app.get('/cookies/:slug', async (request, response) => {
+  app.get('/ideas/:slug', async (request, response) => {
     try {
       const slug = request.params.slug
-      const cookie = await Cookie.findOne({ slug: slug }).exec()
-      if(!cookie) throw new Error('Cookie not found')
+      const idea = await Idea.findOne({ slug: slug }).exec()
+      if(!idea) throw new Error('Idea not found')
   
-      response.render('cookies/show', { 
-        cookie: cookie,
-        readablePrice: readablePrice
+      response.render('ideas/show', { 
+        idea: idea,
+        readableTime: readableTime
       })
     }catch(error) {
       console.error(error)
-      response.status(404).send('Could not find the cookie you\'re looking for.')
+      response.status(404).redirect('Error')
     }
   })
 
-  app.post('/cookies/:slug', async (request, response) => {
+  app.post('/ideas/:slug', async (request, response) => {
     try {
-      const cookie = await Cookie.findOneAndUpdate(
+      const idea = await Idea.findOneAndUpdate(
         { slug: request.params.slug }, 
         request.body,
         { new: true }
       )
       
-      response.redirect(`/cookies/${cookie.slug}`)
+      response.redirect(`/ideas/${idea.slug}`)
     }catch (error) {
       console.error(error)
-      response.send('Error: The cookie could not be created.')
+      response.render('error')
     }
   })
 
-  app.get('/cookies/:slug/edit', async (request, response) => {
+
+
+  app.get('/ideas/:slug/edit', async (request, response) => {
     try {
       const slug = request.params.slug
-      const cookie = await Cookie.findOne({ slug: slug }).exec()
-      if(!cookie) throw new Error('Cookie not found')
+      const idea = await Idea.findOne({ slug: slug }).exec()
+      if(!Idea) throw new Error('Idea not found')
   
-      response.render('cookies/edit', { cookie: cookie })
+      response.render('ideas/edit', { idea: idea })
     }catch(error) {
       console.error(error)
-      response.status(404).send('Could not find the cookie you\'re looking for.')
+      response.status(404).render('error')
     }
   })
   
 
-  app.get('/cookies/:slug/delete', async (request, response) => {
+  app.get('/ideas/:slug/delete', async (request, response) => {
     try {
-      await Cookie.findOneAndDelete({ slug: request.params.slug })
+      await Idea.findOneAndDelete({ slug: request.params.slug })
       
-      response.redirect('/cookies')
+      response.redirect('/ideas')
     }catch (error) {
       console.error(error)
-      response.send('Error: No cookie was deleted.')
+      response.render('error')
+      
     }
   })
 
 
 app.get('/coolpage', (request, response) => {
-    response.send( 'hello '+ data.description)
+    response.send( 'hello '+ data.description + ' with the both of you class ' + data.class)
   })
 
 
   app.get('/about',(request, response) => {
-    const numberOfCookiesInStock = 40
+    const numberOfIdeas = 1
     response.render('about', {
-        numberOfCookiesInStock: numberOfCookiesInStock,
-        nameOfThePage: "Cookieshop",
-        numberOfCookiesSold: 69420
+        numberOfIdeas: numberOfIdeas,
+        nameOfThePage: "Ideationheaven",
+        timeSpend: "2 hours and 61 minutes"
     })
+})
+
+app.get('/error', (request, response) => {
+  response.render('error')
+})
+
+app.get('/redirect', (request, response) => {
+  response.render('redirect')
 })
 
 
 
-  app.get('/api/v1/cookies', (request, response) => {
+  app.get('/api/v1/ideas', (request, response) => {
     response.json({
-      cookies: [
-        { name: 'Chocolate Chip', price: 3.50 },
-        { name: 'Banana', price: 3.00 }
+      ideas: [
+        { name: 'Jan', price: 3.50 },
+        { name: 'Seif', time: 0.12}
       ]
     })
   })
 
   app.get('/test',(request, response) => {
-    const numberOfCookiesInStock = 40
+    const numberOfIdeas = 40
     response.render('test', {
-        numberOfCookiesInStock: numberOfCookiesInStock,
-        nameOfThePage: "Cookieshop",
-        numberOfCookiesSold: 69420
+      numberOfIdeas: numberOfIdeas,
+      nameOfThePage: "Ideationheaven",
+      numberOfIdeasSold: 0
     })
 })
-
-
-  // app.get('/articles/:id', (request, response) => {
-//     const articlesId = request.params.id
-  
-//     response.send(`Wow this here: ${articlesId} is pretty cool now we need actual content for that `)
-//   })
-
 
 
 app.listen(process.env.PORT, () => {

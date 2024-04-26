@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head(navi)', {title: 'Home | Cookieshop'}) %>
+<%- include('includes/head(styles)', {title: 'Home | Ideationheaven'}) %>
 
 <body>
-  <%- include('includes/header', {header: 'MAINPAGE COOKIESHOP'}) %>
+  
   <div class="selection">
     <%- include('includes/header(navi)') %>
   </div>
-  <main>
-    <p>Welcome to my cookieshop. 👋</p>
-    <% const stockNumber = 42 %>
-    <p>We currently have <%= numberOfCookiesInStock %> cookies in stock.</p>
-    <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
-    <p>We already planted <%= numberOfCookiesSold %> cookietrees 
-        because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
-    
+  <main class="center">
+    <p style="color: white; font-size: 4.5cm;">IDEATION HEAVEN</p>
+    <p style="color: white; font-size: 2cm;">Collect your Ideas as easy as possible</p>
   </main>
 
   <%- include('includes/footer') %>

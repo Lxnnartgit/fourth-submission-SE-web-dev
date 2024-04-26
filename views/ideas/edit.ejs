@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <%- include('../includes/head(styles)', {title: "Edit Idea | ideation heaven"}) %>
+    <div class="center">
+    <%- include('../includes/header', {header: 'Edit one '}) %>
+    </div>
+ <div class="selection">
+    <%- include('../includes/header(navi)') %>
+  </div>
+
+<main class="center">
+  <h2>PUSH PROGRESS</h2>
+
+  <form action="/ideas/<%= idea.slug %>" method="POST">
+    <input type="text" value="<%= idea.name %>" name="name" placeholder="name" /><br />
+    <input type="text" value="<%= idea.slug %>" name="slug" placeholder="slug" /><br />
+    <input type="text" value="<%= idea.description %>" name="description" placeholder="description" minlength="8" /><br />
+    <input type="number" value="<%= idea.timeInMinutes %>" name="timeInMinutes" placeholder="time in minutes" /><br />
+    <input type="boolien" value="<%= idea.status %>" name="status" placeholder="not fnished yet true/false?" /><br />
+    <button>Save</button>
+  </form>
+</main>
+
+<%- include('../includes/footer') %>
+</body>
+</html>

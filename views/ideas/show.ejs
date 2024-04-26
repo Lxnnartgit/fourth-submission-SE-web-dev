@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head(styles)', {title: `${idea.name} | ideation heaven`}) %>
+<body>
+  <div class="center">
+    <%- include('../includes/header', {header: `${idea.name}`}) %>
+  </div>
+    <div class="selection">
+      <%- include('../includes/header(navi)') %>
+    </div>
+
+  <main>
+    <h1><%= idea.name %></h1>
+    
+    <p>
+      <strong>Time: <%= readableTime(idea.timeInMinutes) %></strong>
+    </p>
+    <% if(idea.status) { %> 
+      <p style="color: rgb(243, 243, 243);">[In Progress, keep going!!]</p>
+    <% } else { %>
+      <p style="color: green;">Finished, good job 😎</p>
+    <% } %>
+  </main>
+
+  <%- include('../includes/footer') %>
+</body>
+</html>

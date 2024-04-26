@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head(styles)', {title: 'New Idea | ideation heaven'}) %>
+<body>
+  <div class="center">
+    <%- include('../includes/header', {header: 'Create ur next million dollar idea'}) %>
+  </div>
+    <div class="selection">
+      <%- include('../includes/header(navi)') %>
+    </div>
+
+  <main class="center">
+    <h2>Create a new idea</h2>
+
+    <form action="/ideas" method="POST">
+      <input type="text" name="slug" placeholder="slug" required /><br />
+      <input type="text" name="name" placeholder="name" required /><br />
+      <input type="text" name="description" placeholder="description" required minlength="8"/><br />
+      <input type="number" name="timeInMinutes" placeholder="timeInMinutes" required min="0" step="1" /><br />
+      
+      <button>Save</button>
+    </form>
+  </main>
+
+  <%- include('../includes/footer') %>
+</body>
+</html>

@@ -7,9 +7,10 @@
     font-family: sans-serif;
     color: black;
     padding: 15px;
-    background-color: lightgray;
+    background-color: rgb(0, 145, 255);
     margin: auto;
     text-align: center;
+    border: 2px solid black
 
 }
 

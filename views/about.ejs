@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head(styles)', {title: 'About | Cookieshop'}) %>
+<%- include('includes/head(styles)', {title: 'About | Ideation Heaven'}) %>
 
 <body>
+  <div class="center">
   <%- include('includes/header', {header: 'About this project:'}) %>
+  </div>
   <div class="selection">
     <%- include('includes/header(navi)') %>
   </div>
 
-  <main>
-    <p>Welcome to my Ideation Idea</p>
-    <% const stockNumber = 42 %>
-    <p>We currently have <%= numberOfCookiesInStock %> Ideas produced (this is a lie i dont have any)</p>
-    <p>We currently have <%= 42 - 23 %> cookies in stock.</p>
-    <p class="highlight">We already planted <%= numberOfCookiesSold %> cookietrees 
-        because <span style="font-weight: bold;"><%= numberOfCookiesSold %></span> cookies have been sold</p>
-    <a href="/test">testpage for css design (not fully finished)</a>
+  <main class="center">
+    
+    <div>
+      <p>Welcome to my Ideation Idea</p>
+      <% const IdeaNumber = 1727432874 %>
+      <p>So far we have an astonishing number of <span style="font-weight: bold;"><%= IdeaNumber %></span> Ideas produced (this is a lie i dont have any)</p>
+      <p>Of course in reality we have one more because this is an idea as well so we reach a number of <span style="font-weight: bold;"> <%= IdeaNumber + 1 %></span>.</p>
+      <p>Actually I only have this idea to help me if at some point I will get some new ideas</p>
+      <p>Real number of ideas: <%= numberOfIdeas %> </p>
+      <p class="highlight"> If it would work we could see here -> <span style="font-weight: bold;"><%= timeSpend %></span> how much time we spend in total 
+          on all of the projects <br>
+          <span style="font-weight: bold;"><%= timeSpend %></span> is sadly a fake number :c</p>
+    </div>
+    
+  
   </main>
 
   <%- include('includes/footer') %>
